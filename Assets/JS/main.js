@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const connection_cross = document.querySelector("#modal > form > i")
         connection_cross.addEventListener(`click`, e => {
             element.classList.add("hidden")
+            document.querySelector("body").classList.remove("dont-scroll")
         })
         document.querySelector(`#modal > form`)
             .addEventListener("submit", async (e) => {
