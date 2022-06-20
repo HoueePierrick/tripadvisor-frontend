@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Trip Sans Black';
+    src: url('../Fonts/TripSans-Medium.eot');
+    src: url('../Fonts/TripSans-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../Fonts/TripSans-Medium.woff2') format('woff2'),
+        url('../Fonts/TripSans-Medium.woff') format('woff'),
+        url('../Fonts/TripSans-Medium.ttf') format('truetype'),
+        url('../Fonts/TripSans-Medium.svg#TripSans-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

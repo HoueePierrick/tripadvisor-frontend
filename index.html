@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripadvisor copy</title>
+    <link rel="stylesheet" href="./Assets/CSS/reset.css">
+    <link rel="stylesheet" href="./Assets/CSS/tripadvisor-fonts.css">
+    <link rel="stylesheet" href="./Assets/CSS/trip-advisor-black.css">
+    <link rel="stylesheet" href="./Assets/CSS/style.css">
+    <script src="https://kit.fontawesome.com/708cee4a1c.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./Assets/JS/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div>
+                <img src="./Assets/IMG/LogoTripAdvisorGayPride.svg" alt="Logo TripAdvisor Gay Pride" id="tripadivsorlogo">
+                <button id="search-tab">
+                    <i class="fa-solid fa-magnifying-glass" style="font-size: calc(16px);"></i>
+                </button>
+            </div>
+            <div>
+                <button class="header-button">
+                    <i class="fa-solid fa-pen" style="font-size: calc(20px);"></i>
+                    <p>Avis</p>
+                </button>
+                <button class="header-button" onclick="window.open('https://www.tripadvisor.fr/Trips' + location.search)">
+                    <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                    <p>Voyages</p>
+                </button>
+                <button class="header-button" onclick="window.open('https://www.tripadvisor.fr/Inbox' + location.search)">
+                    <i class="fa-regular fa-bell" style="font-size: calc(20px);"></i>
+                    <p>Alertes</p>
+                </button>
+                    <!-- <img src="./Assets/IMG/default-avatar-2020-24.jpeg" alt="your_avatar" id="avatar" onclick="window.open('https://www.tripadvisor.fr/Profile/578pierrickh' + location.search)"> -->
+                <button id="connection">Connectez-vous</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="hidden" id="modal">
+            <form action="" id="form">
+                <i class="fa-solid fa-xmark inform" style="font-size: 1.7em;"></i>
+                <div>Formulaire de contact</div>
+                <input type="text" placeholder="Prénom" class="inform">
+                <input type="text" placeholder="Nom" class="inform">
+                <input type="email" placeholder="Email" class="inform">
+                <textarea type="text" name="Text" id="Text" cols="30" rows="10" placeholder="Ecrivez ici votre message..." class="inform"></textarea>
+                <button class="inform">Envoyer le formulaire</button>
+                <h2 class="hidden2">Vous êtes connecté avec succès</h2>
+                <button class="hidden2 comeback">Revenir sur le site</button>
+            </form>
+        </div>
+        <section id="explore-paris">
+            <h1> <span>Explorez</span> Paris</h1>
+            <nav id="item-choice">
+                <button class="category-choice" onclick="window.open('https://www.tripadvisor.fr/Hotels-g187147-Paris_Ile_de_France-Hotels.html' + location.search)">
+                    <p class="category-name">Hôtels</p>
+                    <i class="fa-solid fa-bed" style="font-size: calc(20px);"></i>
+                </button>
+                <button class="category-choice" onclick="window.open('https://www.tripadvisor.fr/VacationRentals-g187147-Reviews-Paris_Ile_de_France-Vacation_Rentals.html' + location.search)">
+                    <p class="category-name">Locations de vacances</p>
+                    <i class="fa-solid fa-house-user" style="font-size: calc(20px);"></i>
+                </button>
+                <button class="category-choice" onclick="window.open('https://www.tripadvisor.fr/Attractions-g187147-Activities-Paris_Ile_de_France.html' + location.search)">
+                    <p class="category-name">Activités</p>
+                    <i class="fa-solid fa-ticket-simple" style="font-size: calc(20px);"></i>
+                </button>
+                <button class="category-choice" onclick="window.open('https://www.tripadvisor.fr/Restaurants-g187147-Paris_Ile_de_France.html' + location.search)">
+                    <p class="category-name">Restaurants</p>
+                    <i class="fa-solid fa-utensils" style="font-size: calc(20px);"></i>
+                </button>
+                <button class="category-choice" onclick="window.open('https://www.tripadvisor.fr/ShowForum-g187147-i14-Paris_Ile_de_France.html' + location.search)">
+                    <p class="category-name">Forums de voyage</p>
+                    <i class="fa-regular fa-comments" style="font-size: calc(20px);"></i>
+                </button>
+                <button class="category-choice-hidden" onclick="window.open('https://www.tripadvisor.fr/ShowForum-g187147-i14-Paris_Ile_de_France.html' + location.search)">
+                    <p class="category-name">Vols</p>
+                    <i class="fa-regular fa-paper-plane" style="font-size: calc(20px);"></i>
+                </button>
+                <button class="category-choice-hidden">
+                    <p class="category-name">Croisières</p>
+                    <i class="fa-solid fa-chess-queen" style="font-size: calc(20px);"></i>
+                </button>
+                <button class="category-choice">
+                    <p class="category-name">Plus</p>
+                    <i class="fa-solid fa-ellipsis" style="font-size: calc(20px);"></i>
+                </button>
+            </nav>
+        </section>
+        <section id="image-wall">
+            <img src="./Assets/IMG/Seine.jpeg" alt="Banks of the Seine river"  id="seine">
+            <img src="./Assets/IMG/Scooter.jpeg" alt="Happy coople jumping on a scooter" id="scooter">
+            <img src="./Assets/IMG/Eiffel_Tower.jpeg" alt="Eiffel tower from far" id="eiffel">
+            <button>
+                <i class="fa-solid fa-image" style="font-size: 1.1em;"></i>
+                <p>Toutes les photos</p>
+            </button>
+        </section>
+        <section id="destination-path">
+            <div id="pathway">
+                <p onclick="window.open('https://www.tripadvisor.fr/Tourism-g4-Europe-Vacations.html' + location.search)">Europe</p>
+                <p class="chevron">></p>
+                <p onclick="window.open('https://www.tripadvisor.fr/Tourism-g187070-France-Vacations.html' + location.search)">France</p>
+                <p class="chevron">></p>
+                <p onclick="window.open('https://www.tripadvisor.fr/Tourism-g187144-Ile_de_France-Vacations.html' + location.search)">Île de France</p>
+                <p class="chevron">></p>
+                <p>Paris</p>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div>Visiter : Paris</div>
+        </section>
+        <section id="key-content">
+            <div id="key-content-text">
+                <h2>La Ville Lumière éblouit en tous points</h2>
+                <p  class="summary-one">Aucun autre endroit au monde ne fait autant rêver que Paris. La ville séduit par son art, son architecture, sa culture et sa cuisine, mais il y a aussi des merveilles plus discrètes qui n’attendent qu’à être explorées : les ruelles pavées pittoresques, les pâtisseries au coin de la rue et les petits bistrots douillets qui vous invitent à boire un verre de beaujolais. Préparez-vous à vous approprier Paris.</p>
+            </div>
+            <div id="unmissable">
+                <h2>Paris : les immanquables</h2>
+                <div class="unmissable-content">
+                        <div class="fourth-column">
+                            <h3>Se divertir</h3>
+                            <p class="summary-two">Des lieux à voir, des rues à explorer et des expériences emblématiques à Paris.</p>
+                            <span class="display-all">Tout afficher</span>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d188151-Reviews-Eiffel_Tower-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/eiffeltower-2.jpeg" alt="Picture of the Eiffel tower from a park" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-solid fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Eiffel Tower</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">140 866</span>
+                            </div>
+                            <div class="element-description">Tours et plateformes d'observation, Monuments & Points d'intérêt</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d188757-Reviews-Louvre_Museum-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/louvre-pyramid.jpeg" alt="Picture of the Louvre's pyramid" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-solid fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Musée du Louvre</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">101 371</span>
+                            </div>
+                            <div class="element-description">Bâtiments architecturaux, Musées d'art</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d188709-Reviews-Arc_de_Triomphe-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/triumph-arc.jpeg" alt="Picture of the Arc de Triomphe" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-solid fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Arc de Triomphe</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">45 386</span>
+                            </div>
+                            <div class="element-description">Bâtiments architecturaux, Sites historiques</div>
+                        </div>
+                        <button class="arrow-circle">
+                            <i class="fa-solid fa-arrow-right" style="font-size: calc(24px);"></i>
+                        </button>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d188149-Reviews-Musee_Rodin-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/vue-de-la-cour-d-honneur.jpeg" alt="Picture of the Rodin from the inside" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Musée Rodin</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">12 539</span>
+                            </div>
+                            <div class="element-description">Musées spécialisés</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d188679-Reviews-Cathedrale_Notre_Dame_de_Paris-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/notre-dame.jpeg" alt="Picture of the cathedrale Notre-Dame de Paris" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-solid fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Cathédrale Notre-Dame de Paris</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">71 383</span>
+                            </div>
+                            <div class="element-description">Bâtiments architecturaux, Sites historiques</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d263032-Reviews-Shakespeare_and_Company_Bookstore-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/shakespeare.jpeg" alt="Picture from outside the bookstore Shakespeare" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Librairie Shakespeare and Company</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">3 940</span>
+                            </div>
+                            <div class="element-description">Bibliothèques, Grands magasins</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d188150-Reviews-Musee_d_Orsay-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/Musee-d-Orsay.jpeg" alt="Picture of the Eiffel tower from a park" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-solid fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Musée d'Orsay</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">66 245</span>
+                            </div>
+                            <div class="element-description">Musées d'art</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g227615-d189195-Reviews-Marche_aux_Puces_de_Saint_Ouen-Saint_Ouen_Seine_Saint_Denis_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/puces-saint-ouen.jpeg" alt="Picture of the street market of Saint-Ouen" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Marché aux Puces de Saint-Ouen</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-regular fa-circle" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">875</span>
+                            </div>
+                            <div class="element-description">Antiquaires, Marchés aux puces & Marchés de rue</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d190685-Reviews-Basilique_du_Sacre_Coeur_de_Montmartre-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/sacre-coeur.jpeg" alt="Picture of the Basilique du Sacré-Cœur from outside" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Basilique du Sacré-Cœur de Montmartre</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">38 896</span>
+                            </div>
+                            <div class="element-description">Églises et cathédrales</div>
+                        </div>
+                        <div class="fourth-column" onclick="window.open('https://www.tripadvisor.fr/Attraction_Review-g187147-d194171-Reviews-Jardin_des_Tuileries-Paris_Ile_de_France.html' + location.search)">
+                            <div class="column-imager">
+                                <img src="./Assets/IMG/jardin-des-tuileries.jpeg" alt="Picture of the Tuileries garden" class="column-image">
+                                <button class="heart-circle">
+                                    <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                                </button>
+                            </div>
+                            <h4>Jardin des Tuileries</h4>
+                            <div class="rating">
+                                <span class="rating-circle">
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                    <i class="fa-solid fa-circle-half-stroke" style="font-size: calc(12px);"></i>
+                                </span>
+                                <span class="rating-count">7 595</span>
+                            </div>
+                            <div class="element-description">Jardins</div>
+                        </div>
+                    </div>
+                <div class="unmissable-content">
+                    <div class="fourth-column">
+                        <h3>Se reposer</h3>
+                        <p class="summary-two">Un mélange de charme, de symboles et de modernité.</p>
+                        <span class="display-all">Tout afficher</span>
+                    </div>
+                    <div class="fourth-column">
+                        <div class="column-imager">
+                            <img src="./Assets/IMG/Bristol.jpeg" alt="Picture of inside the Bristol hotel" class="column-image">
+                            <button class="heart-circle">
+                                <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                            </button>
+                            <div class="behind-reco-yellow">
+                                <i class="fa-solid fa-dove"  style="font-size: calc(20px);"></i>
+                                <p>2022</p>
+                            </div>
+                        </div>
+                        <h4>Le Bristol Paris</h4>
+                        <div class="rating">
+                            <span class="rating-circle">
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                            </span>
+                            <span class="rating-count">2 153</span>
+                        </div>
+                    </div>
+                    <div class="fourth-column">
+                        <div class="column-imager">
+                            <img src="./Assets/IMG/elephant.jpeg" alt="Picture of inside the Bristol hotel" class="column-image">
+                            <button class="heart-circle">
+                                <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                            </button>
+                            <div class="behind-reco-yellow">
+                                <i class="fa-solid fa-dove"  style="font-size: calc(20px);"></i>
+                                <p>2022</p>
+                            </div>
+                        </div>
+                        <h4>La Réserve Paris - Hotel and Spa</h4>
+                        <div class="rating">
+                            <span class="rating-circle">
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                            </span>
+                            <span class="rating-count">527</span>
+                        </div>
+                    </div>
+                    <div class="fourth-column">
+                        <div class="column-imager">
+                            <img src="./Assets/IMG/george-V.jpeg" alt="Picture of inside the Bristol hotel" class="column-image">
+                            <button class="heart-circle">
+                                <i class="fa-regular fa-heart" style="font-size: calc(20px);"></i>
+                            </button>
+                            <div class="behind-reco-green">
+                                <i class="fa-solid fa-dove"  style="font-size: calc(20px);"></i>
+                                <p>2022</p>
+                            </div>
+                        </div>
+                        <h4>Four Seasons Hotel George V</h4>
+                        <div class="rating">
+                            <span class="rating-circle">
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                                <i class="fa-solid fa-circle" style="font-size: calc(12px);"></i>
+                            </span>
+                            <span class="rating-count">3 145</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="forum">
+            <div id="forum-part-one">
+                <h2>En tendance dans les forums</h2>
+                <span id="forum-display-all" onclick="window.open('https://www.tripadvisor.fr/VacationRentals-g187147-Reviews-Paris_Ile_de_France-Vacation_Rentals.html' + location.search)">Tout afficher</span>
+            </div>
+            <div id="forum-squares">
+                <div class="third-square">
+                    <div class="third-square-title">Mode de transport Paris</div>
+                    <div class="third-square-content">
+                        <img src="./Assets/IMG/avatar-coralie.jpeg" alt="" class="forum-avatar">
+                        <span>
+                            <span>Par</span>
+                            <a class="profile-link" href="https://www.tripadvisor.fr/Profile/835coralieb?fid=10af1c6a-1052-4fd4-b8a9-a90b14d925a5" target="_blank">Coralie B</a>
+                            <span class="middle-dot">
+                                <i class="fa-solid fa-circle" style="font-size: calc(4px);"></i>
+                            </span>
+                            <span>7 réponses</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="third-square">
+                    <div class="third-square-title">brioche doree Paris st lazare</div>
+                    <div class="third-square-content">
+                        <img src="./Assets/IMG/avatar-pyh.jpeg" alt="" class="forum-avatar">
+                        <span>Par</span>
+                        <a class="profile-link" href="https://www.tripadvisor.fr/Profile/patrickmR8730PL?fid=ded4d75a-5c9a-4852-bd2d-a95191636623" target="_blank">pyh paris</a>
+                        <span class="middle-dot">
+                            <i class="fa-solid fa-circle" style="font-size: calc(4px);"></i>
+                        </span>
+                        <span>3 réponses</span>
+                    </div>
+                </div>
+                <div class="third-square">
+                    <div class="third-square-title">Guides touristiques digitaux sur application mobile</div>
+                    <div class="third-square-content">
+                        <img src="./Assets/IMG/avatar-david.jpeg" alt="" class="forum-avatar">
+                        <span>Par</span>
+                        <a class="profile-link" href="https://www.tripadvisor.fr/Profile/R2865MCdavidl?fid=b673f7ac-3ca4-4dd2-a1e0-19b4bf1bc109" target="_blank">David L</a>
+                        <span class="middle-dot">
+                            <i class="fa-solid fa-circle" style="font-size: calc(4px);"></i>
+                        </span>
+                        <span>2 réponses</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div id="footer-first-div">
+            <div>
+                <img src="./Assets/IMG/Tripadvisor_logoset_solid_green.svg" alt="Tripadvisor green logo"> 
+                <div id="legal-content">
+                     <div id="copyright">© 2022 TripAdvisor LLC Tous droits réservés.</div>
+                     <div id="legal-doc">
+                         <span>Conditions d'utilisation</span>
+                         <span>Confidentialité et utilisation des cookies</span>
+                         <span>Accord d'utilisation des cookies</span>
+                         <span>Plan du site</span>
+                         <span>Fonctionnement du site</span>
+                      </div>  
+                 </div>
+            </div>
+            <p>Cette version de notre site internet s'adresse aux personnes parlant français en France. Si vous habitez un autre pays ou une autre région, merci de choisir la version de Tripadvisor appropriée pour votre pays ou région dans le menu déroulant. 
+                <button>plus</button>
+            </p>
+        </div>
+        <div>
+            <button class="choice-button">
+                <span>€ EUR</span>
+                <i class="fa-solid fa-caret-down" style="font-size: calc(20px);"></i>
+            </button>
+        </div>
+        <div>
+            <button class="choice-button">
+                <span>France</span>
+                <i class="fa-solid fa-caret-down" style="font-size: calc(20px);"></i>
+            </button>
+        </div>
+    </footer>
+</body>
+</html>
