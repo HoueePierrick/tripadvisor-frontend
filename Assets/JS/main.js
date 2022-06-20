@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log(`Document loaded`)
     const connection = document.getElementById(`connection`)
-    // console.log(connection)
     connection.addEventListener(`click`, e => {
         const element = document.getElementById("modal")
         element.classList.remove("hidden")
@@ -41,8 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     .addEventListener("click", e => {
                         element.classList.add("hidden")
                     })
+                document.querySelector("body").classList.remove("dont-scroll")
             })
         })
-        // utiliser ngrok
-        // héberger sur netlify
 })
